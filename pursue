@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+CONFIGPATH=/opt/pursue/config/
+FILEPATH=0
+PARAM=0
+CMD=0
+
+
+runCMD(){
+  CMD=$(echo grep "$FLAGS" "$PATTEN" "$FILE")
+  # echo "$CMD"
+  eval "$CMD"
+}
+
+
+main(){
+  FLAGS=$(cat "$FILEPATH" | jq '.flags' | sed 's/"//g')
+  PATTEN=$(cat "$FILEPATH" | jq '.patten')
+
+  if [ -p /dev/stdin ]; then
+    while IFS= read FILE; do
+        runCMD
+    done
+  else
+    for FILE in $(find . -type f); do
+      runCMD
+    done
+  fi
+
+  exit $?
+}
+
+
+help(){
+  echo -e "$(basename "$0") [--ARG] Searches file contents for predefined regex expressions.
+where:
+  -h, --help\t\tshow this help text"
+
+  for FILE in $(ls "$CONFIGPATH"); do
+    OPTION=$(echo "$FILE" | awk -F'.' '{print $1}')
+    HELPTEXT=$(jq '.helptext' "$CONFIGPATH""$FILE")
+    echo -e "  --$OPTION\t\t$HELPTEXT"
+  done
+
+  exit 0
+}
+
+for f in "$@"; do
+  if [ "--help" = "$f" ] || [  "-h" = "$f" ]; then
+    help
+  fi
+
+  PARAM=$(echo "$f" | sed 's/--//g')
+  FILEPATH="$CONFIGPATH""$PARAM".json
+  if [ -e "$FILEPATH" ]; then
+    main
+  fi
+  echo "unknown arg '$f'" >&2
+  exit 1
+done

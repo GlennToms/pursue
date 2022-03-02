@@ -1,0 +1,5 @@
+{
+    "flags": "-Pirh",
+    "patten": "([[:alnum:]|\\._.-]+@[[:alnum:]_.-]+?\\.[[:alpha:].]{2,6})",
+    "helptext": "Emails addresses but returns the whole line"
+}

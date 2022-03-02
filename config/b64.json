@@ -1,0 +1,5 @@
+{
+    "flags": "-HnroE",
+    "patten": "([^A-Za-z0-9+/]|^)(eyJ|YTo|Tzo|PD[89]|aHR0cHM6L|aHR0cDo|rO0)[%a-zA-Z0-9+/]+={0,2}",
+    "helptext": "Finds base64 encoded strings over 45 length"
+}

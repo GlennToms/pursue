@@ -1,0 +1,5 @@
+{
+    "flags": "-ioPa",
+    "patten": "href=\"\\K([/A-z0-9.]*)\"|src=\"\\K([/A-z0-9.]*)\"",
+    "helptext": "href and src files / links"
+}

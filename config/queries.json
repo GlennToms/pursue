@@ -1,0 +1,5 @@
+{
+    "flags": "-ioPaH",
+    "patten": "(\\w+:\/\/[A-z0-9\\./\\-]*\\?[A-z0-9\\./\\-]*=)",
+    "helptext": "Will find urls with query ?.*="
+}

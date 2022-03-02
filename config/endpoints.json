@@ -1,0 +1,5 @@
+{
+    "flags": "-ioPa",
+    "patten": "(\\w+://[A-z0-9\\./\\-]*)",
+    "helptext": "Proto://, ftp://example.com, https://www.example.com/page/, https://www.example.com/page"
+}

@@ -1,0 +1,5 @@
+{
+    "flags": "-Piorh",
+    "patten": "([[:alnum:]|\\._.-]+@[[:alnum:]_.-]+?\\.[[:alpha:].]{2,6})",
+    "helptext": "Emails addresses"
+}

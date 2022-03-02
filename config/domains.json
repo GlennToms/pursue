@@ -1,0 +1,5 @@
+{
+    "flags": "-ioPa",
+    "patten": "\\w+://\\K([A-z0-9\\.-])*",
+    "helptext": "example.com, example1.com, example3.com"
+}
